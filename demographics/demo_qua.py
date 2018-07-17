@@ -1,7 +1,7 @@
 import boto3
 
-questions = open('object_qs.xml').read()
-answers = open('object_ans').read()
+questions = open('demo_qs.xml').read()
+answers = open('demo_ans').read()
 
 mturk = boto3.client('mturk',
                      region_name='us-east-1',
