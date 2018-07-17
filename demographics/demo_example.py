@@ -23,7 +23,7 @@ TITLE = 'The title of the HIT'
 DESCRIPTION = 'The description of the HIT.'
 KEYWORDS = 'the,keywords,of,the,HIT'
 AUTO_APPROVAL_DELAY_IN_SECONDS = 0
-QUALIFICATION_TYPE_ID = ''  # See main file for more information
+QUALIFICATION_TYPE_ID = ''  # See qua file for more information
 # In this HIT, the worker needs a score of 100% on the qualification test
 
 
