@@ -4,17 +4,18 @@ The default questions and answers were designed for use in [Duncan Lab](https://
 Proper documentation may be consulted for more help [here](http://boto3.readthedocs.io/en/latest/reference/services/mturk.html).
 
 ## Table of Contents
-* [Getting Started]()
-    * [Installing Prerequisites]()
-    * [Configuring the Answer Key]()
-    * [Publishing the Qualification]()
-* [Advanced Options]()
-    * [Creating a Question]()
-        * [Creating an Answer Option]()
-    * [Removing a Question]()
-        * [Removing an Answer Option]()
-    * [Embedding Media]()
-* [Author(s)]()
+* [Getting Started](#getting-started)
+    * [Installing Prerequisites](#installing-prerequisites)
+    * [Configuring the Answer Key](#configuring-the-answer-key)
+    * [Publishing the Qualification](#publishing-the-qualification)
+* [Advanced Options](#advanced-options)
+    * [Creating a Question](#creating-a-question)
+        * [Creating an Answer Option](#creating-an-answer-option)
+    * [Removing a Question](#removing-a-question)
+        * [Removing an Answer Option](#removing-an-answer-option)
+    * [Embedding Media](#embedding-media)
+* [Author(s)](#authors)
+* [Acknowledgement(s)](#acknowledgements)
 
 ## Getting Started
 These instructions are mainly written for research assistants in Duncan Lab and assume a limited understanding of programming of any sort.
@@ -188,15 +189,66 @@ Replace **example_identifier** with the same unique identifier used in **demo_qs
 
 Replace **x** with your score.
 This value should be either 0 or 1, depending on whether this answer option is accepted or not.
-For more information, see [**Configuring the Answer Key**]().
+For more information, see [**Configuring the Answer Key**](#configuring-the-answer-key).
 
 ### Removing a Question
-todo
+First, open **demo_qs.xml** and locate the question you wish to remove (by its **QuestionIdentifier**).
+The entire question should be within opening and closing **Question** tags, like so:
+```
+<Question>
+    *** Question Content ***
+</Question>
+```
+Select and delete the entire block (including the opening and closing tags).
+
+Next, open **demo_ans.xml** and locate the corresponding question block (with the same **QuestionIdentifier**).
+Select and delete it, as in the question key.
+
+Finally, scroll down to the following code:
+```
+<QualificationValueMapping>
+    <PercentageMapping>
+        <MaximumSummedScore>x</MaximumSummedScore>
+    </PercentageMapping>
+</QualificationValueMapping>
+```
+The value **x** should always correspond to the number of questions in the qualification test.
+Since you have removed a question, decrease the value of **x** by 1.
+
 #### Removing an Answer Option
-todo
+Open **demo_qs.xml** and locate the question you wish to remove the answer option from.
+Locate the answer option. It should look like so:
+```
+<Selection>
+    <SelectionIdentifier>example_identifier</SelectionIdentifier>
+    <Text>Example Text</Text>
+</Selection>
+```
+Select and delete this entire block of code.
+
+Then, open **demo_ans.xml** and locate the corresponding answer option.
+It should look like so:
+```
+<AnswerOption>
+    <SelectionIdentifier>example_identifier</SelectionIdentifier>
+    <AnswerScore>x</AnswerScore>
+</AnswerOption>
+```
+Make sure the **SelectionIdentifier** is the same as in the question key.
+Select and delete this entire block of code.
+
+**Note:** After removing an answer option, make sure that at least one answer option in that question has an **AnswerScore** of 1.
+If not, the qualification will be impossible to attain.
+More information on how to change this value can be found in [Configuring the Answer Key](#configuring-the-answer-key).
 
 ### Embedding Media
+Aside from text, additional media such as images and video can be embedded into a question.
 todo
 
 ## Author(s)
 * **Calvin Choi**
+
+## Acknowledgement(s)
+* **Katherine Wood**
+    * Code from [this](https://katherinemwood.github.io/post/qualifications/) kind post was modified for personal use
+    * Modifications were for easier use for users with little programming experience

@@ -1,3 +1,4 @@
+import os
 import boto3
 
 AWS_ACCESS_KEY = ''
@@ -13,8 +14,9 @@ TEST_DURATION_IN_SECONDS = 300
 # DO NOT CHANGE CODE BELOW #
 ############################
 
-questions = open('demo_qs.xml').read()
-answers = open('demo_ans.xml').read()
+dir_name = os.path.dirname(__file__)
+questions = open(os.path.join(dir_name, 'demo_qs.xml')).read()
+answers = open(os.path.join(dir_name, 'demo_ans.xml')).read()
 
 if IS_SANDBOX:
     endpoint_url = 'https://mturk-requester-sandbox.us-east-1.amazonaws.com'
@@ -35,7 +37,3 @@ qual_response = mturk.create_qualification_type(
     Test=questions,
     AnswerKey=answers,
     TestDurationInSeconds=TEST_DURATION_IN_SECONDS)
-
-# The QUALIFICATION_TYPE_ID required to use this qualification in a HIT
-# This can also be found on the MTurk website in the page of this created qualification
-# print(qual_response['QualificationType']['QualificationTypeId'])
