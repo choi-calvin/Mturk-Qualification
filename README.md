@@ -33,7 +33,7 @@ More information can be found in the Boto 3 [Quickstart Guide](https://boto3.rea
 ### Configuring the Answer Key
 In order to modify the answer key for your purposes, open **demo_ans.xml** in an editor of your choice.
 Each question in the answer key is written within
-```
+```xml
 <Question>
 </Question>
 ```
@@ -48,14 +48,14 @@ Each answer option is written in
 blocks, with its unique **SelectionIdentifier**. Find the selection you want to modify.
 
 Within the
-```
+```xml
 <AnswerScore>x</AnswerScore>
 ```
 block, replace **x** with a numeric value. The number should be either 0 or 1.
 To change the option to an accepted answer, change the value to 1. If not, change it to 0.
 
 For example, to make the qualification test to accept only males, the answer key should look like this:
-```
+```xml
 <Question>
     <QuestionIdentifier>gender</QuestionIdentifier>
     <AnswerOption>
@@ -73,7 +73,7 @@ For example, to make the qualification test to accept only males, the answer key
 </Question>
 ```
 To accept both males and females:
-```
+```xml
 <Question>
     <QuestionIdentifier>gender</QuestionIdentifier>
     <AnswerOption>
@@ -125,14 +125,14 @@ If not, you can run the script from the terminal like so:
 Unfortunately, the only type of questions accepted for automated marking is multiple choice.
 First, open **demo_qs.xml** in the editor of your choice.
 Similar to the answer key, each question is written within
-```
+```xml
 <Question>
 </Question>
 ```
 blocks, with its corresponding **QuestionIdentifier**.
 
 Anywhere in the space between questions, add the following code:
-```
+```xml
 <Question>
     <QuestionIdentifier>example_identifier</QuestionIdentifier>
     <DisplayName>Example Display Name</DisplayName>
@@ -160,13 +160,13 @@ Replace **Example Display Name** in the code above.
 Replace **Example Text** with your question text.
 This is what will be shown to the worker completing the qualification test.
 For example:
-```
+```xml
 <Text>Do you have any previous experience with psychological experiments?</Text>
 ```
 Next, open **demo_ans.xml** in the editor of your choice.
 The layout is similar as in the question key.
 In between any question block, add the following code:
-```
+```xml
 <Question>
     <QuestionIdentifier>example_identifier</QuestionIdentifier>
 
@@ -175,7 +175,7 @@ In between any question block, add the following code:
 Replace **example_identifier** with the same **QuestionIdentifier** that you chose in the question key.
 
 Next, scroll to the bottom of the answer key and find the following block of code:
-```
+```xml
 <QualificationValueMapping>
     <PercentageMapping>
         <MaximumSummedScore>x</MaximumSummedScore>
@@ -189,7 +189,7 @@ This step is very important.**
 
 #### Creating an Answer Option
 In **demo_qs.xml**, add the following code between **\<Selections>** and **\</Selections>**
-```
+```xml
 <Selection>
     <SelectionIdentifier>example_identifier</SelectionIdentifier>
     <Text>Example Text</Text>
@@ -203,7 +203,7 @@ Replace **Example Text** as well. This will be the text that is shown to the wor
 
 Next, open **demo_ans.xml** and locate the question that you added the answer option to.
 Within **\<Question>** and **\</Question>** add the following:
-```
+```xml
 <AnswerOption>
     <SelectionIdentifier>example_identifier</SelectionIdentifier>
     <AnswerScore>x</AnswerScore>
@@ -218,7 +218,7 @@ For more information, see [**Configuring the Answer Key**](#configuring-the-answ
 ### Removing a Question
 First, open **demo_qs.xml** and locate the question you wish to remove (by its **QuestionIdentifier**).
 The entire question should be within opening and closing **Question** tags, like so:
-```
+```xml
 <Question>
     *** Question Content ***
 </Question>
@@ -229,7 +229,7 @@ Next, open **demo_ans.xml** and locate the corresponding question block (with th
 Select and delete it, as in the question key.
 
 Finally, scroll down to the following code:
-```
+```xml
 <QualificationValueMapping>
     <PercentageMapping>
         <MaximumSummedScore>x</MaximumSummedScore>
@@ -242,7 +242,7 @@ Since you have removed a question, decrease the value of **x** by 1.
 #### Removing an Answer Option
 Open **demo_qs.xml** and locate the question you wish to remove the answer option from.
 Locate the answer option. It should look like so:
-```
+```xml
 <Selection>
     <SelectionIdentifier>example_identifier</SelectionIdentifier>
     <Text>Example Text</Text>
@@ -252,7 +252,7 @@ Select and delete this entire block of code.
 
 Then, open **demo_ans.xml** and locate the corresponding answer option.
 It should look like so:
-```
+```xml
 <AnswerOption>
     <SelectionIdentifier>example_identifier</SelectionIdentifier>
     <AnswerScore>x</AnswerScore>
