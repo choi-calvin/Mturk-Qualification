@@ -21,7 +21,7 @@ Proper documentation may be consulted for more help [here](http://boto3.readthed
 These instructions are mainly written for research assistants in Duncan Lab and assume a limited understanding of programming of any sort.
 ### Installing Prerequisites
 Amazon's "Boto 3" is normally installed with pip, which comes shipped with Python 3.
-To install, open up "Terminal" (on Mac) or "Command Prompt" (on Windows).
+To install, open up **Terminal** (on Mac) or **Command Prompt** (on Windows).
 
 Type in the line:
 ```
