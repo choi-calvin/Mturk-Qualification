@@ -1,4 +1,4 @@
-# Qualification
+# Publishing MTurk Qualification with Boto 3
 Demonstration of creating and posting a Qualification HIT for Amazon MTurk in Boto 3.
 The default questions and answers were designed for use in [Duncan Lab](https://www.duncanlab.org), however, they may be configured for alternative use.
 Proper documentation may be consulted for more help [here](http://boto3.readthedocs.io/en/latest/reference/services/mturk.html).
@@ -8,12 +8,12 @@ Proper documentation may be consulted for more help [here](http://boto3.readthed
     * [Installing Prerequisites](#installing-prerequisites)
     * [Configuring the Answer Key](#configuring-the-answer-key)
     * [Publishing the Qualification](#publishing-the-qualification)
+        * [Running the Script](#running-the-script)
 * [Advanced Options](#advanced-options)
     * [Creating a Question](#creating-a-question)
         * [Creating an Answer Option](#creating-an-answer-option)
     * [Removing a Question](#removing-a-question)
         * [Removing an Answer Option](#removing-an-answer-option)
-    * [Embedding Media](#embedding-media)
 * [Author(s)](#authors)
 * [Acknowledgement(s)](#acknowledgements)
 
@@ -94,7 +94,30 @@ It is allowed to have more than one acceptable answer option.
 Having no acceptable answer option is also allowed, however, this will result in the qualification being impossible to attain.
 
 ### Publishing the Qualification
-todo
+After all configurations have been made to the question and answer forms, open **demo_qua.py**.
+Additional configurations are required by changing variable values.
+These variables are as such:
+
+Variable | Type | Description
+--- | --- | ---
+AWS_ACCESS_KEY | String | The access key for your AWS account.*
+AWS_SECRET_KEY | String | The secret key for your AWS account.*
+IS_SANDBOX | Bool | Whether to publish the Qualification to the developer sandbox. A value of **True** publishes to the sandbox.
+NAME | String | The name of the Qualification. You cannot have two Qualifications with the same name.
+DESCRIPTION | String | A brief description of the Qualification, capped at 2000 characters.
+KEYWORDS | String | Keywords that help workers search for the Qualification. Each keyword must be separated by a comma, no spaces.
+TEST_DURATION_IN_SECONDS | Int | The maximum time the worker has to complete the Qualification.
+<sup>*These have a high level of security. It is recommended that they be saved in a safe location and not in the script itself.</sup>
+
+#### Running the Script
+After all the variables have been assigned the appropriate values, the script must be run.
+This can be done from within a Python IDE of your choice.
+If not, you can run the script from the terminal like so:
+
+1. Open up **Terminal** on Mac, or **Command Prompt** on Windows.
+2. Type in "python " without the quotations marks. Note the space at the end.
+3. Type in the path of **demo_qua.py**. A short way to do this is to drag and drop the file into **Terminal/Command Prompt**.
+4. Press "Enter" to run the script. If no errors have occurred, the Qualification is now published!
 
 ## Advanced Options
 ### Creating a Question
@@ -241,14 +264,9 @@ Select and delete this entire block of code.
 If not, the qualification will be impossible to attain.
 More information on how to change this value can be found in [Configuring the Answer Key](#configuring-the-answer-key).
 
-### Embedding Media
-Aside from text, additional media such as images and video can be embedded into a question.
-todo
-
 ## Author(s)
 * **Calvin Choi**
 
 ## Acknowledgement(s)
 * **Katherine Wood**
     * Code from [this](https://katherinemwood.github.io/post/qualifications/) kind post was modified for personal use
-    * Modifications were for easier use for users with little programming experience
