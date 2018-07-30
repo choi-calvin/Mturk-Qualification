@@ -41,7 +41,7 @@ blocks. Each question is distinguished by its unique **QuestionIdentifier**.
 Find the question block of which answer choices you want to configure.
 
 Each answer option is written in
-```
+```xml
 <AnswerOption>
 </AnswerOption>
 ```
@@ -105,7 +105,7 @@ AWS_SECRET_KEY | String | The secret key for your AWS account.*
 IS_SANDBOX | Bool | Whether to publish the Qualification to the developer sandbox. A value of **True** publishes to the sandbox.
 NAME | String | The name of the Qualification. You cannot have two Qualifications with the same name.
 DESCRIPTION | String | A brief description of the Qualification, capped at 2000 characters.
-KEYWORDS | String | Keywords that help workers search for the Qualification. Each keyword must be separated by a comma, no spaces.
+KEYWORDS | String | Keywords that help workers search for the Qualification. Each keyword must be separated by a comma, no spaces. Capped at 1000 characters.
 TEST_DURATION_IN_SECONDS | Int | The maximum time the worker has to complete the Qualification.
 
 <sup>*These have a high level of security. It is recommended that they be saved in a safe location and not in the script itself.</sup>
