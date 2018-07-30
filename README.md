@@ -107,6 +107,7 @@ NAME | String | The name of the Qualification. You cannot have two Qualification
 DESCRIPTION | String | A brief description of the Qualification, capped at 2000 characters.
 KEYWORDS | String | Keywords that help workers search for the Qualification. Each keyword must be separated by a comma, no spaces.
 TEST_DURATION_IN_SECONDS | Int | The maximum time the worker has to complete the Qualification.
+
 <sup>*These have a high level of security. It is recommended that they be saved in a safe location and not in the script itself.</sup>
 
 #### Running the Script
