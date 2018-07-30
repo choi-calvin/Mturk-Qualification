@@ -1,3 +1,6 @@
+# Documentation and guide can be found at
+# https://github.com/hyun20005/Mturk-Qualification
+
 import os
 import boto3
 
